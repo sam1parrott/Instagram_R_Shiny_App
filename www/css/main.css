@@ -2495,9 +2495,9 @@ html.no-csstransitions .home-content__main {
   vertical-align: top;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .item-folio__thumb a {
   display: block;
