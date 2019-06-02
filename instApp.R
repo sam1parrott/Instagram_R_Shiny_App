@@ -116,9 +116,9 @@ ui = shiny::htmlTemplate(
   city_selector = selectInput(
     "country", 
     label = "Select Country", 
-    choices = df$country %>% 
-      unique(),
-    selected = "New Zealand"
+    choices = c("All", df$country %>% 
+      unique()),
+    selected = "All"
   ),
   
   # Leaflet map
@@ -151,15 +151,19 @@ server <- function(input, output) {
   })
   
   points <- reactive({
-    df %>%
-    filter(country == input$country)
+    if (input$country != "All") {
+      df %>%
+      filter(country == input$country)
+    } else {
+      df
+    }
   })
   
   # Creating Map 
   output$mymap <- renderLeaflet({
     leaflet(data = points()) %>%
       addProviderTiles(providers$CartoDB.Positron) %>%
-      addMarkers(~longitude, ~latitude, clusterOptions = markerClusterOptions(), popup = ~htmlEscape(paste("Location: ",location_name, "<br> Posted Time: ", date)))
+      addMarkers(~longitude, ~latitude, clusterOptions = markerClusterOptions(), popup = ~htmlEscape(paste("Location: ",location_name, "-- Posted Time: ", date)))
   })
 }
 
