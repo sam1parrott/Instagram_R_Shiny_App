@@ -20,8 +20,6 @@ library(rworldmap)
 
 # #####Get data from instagram API
 # app_name <- "ShinyApp"
-# client_id <- "cd886638948746f7a68d729d28eede56"
-# client_secret <- "807e480d23ee46e497cdbf63b291774f"
 # scope = "basic"
 # instagram <- oauth_endpoint(
 #   authorize = "https://api.instagram.com/oauth/authorize",
@@ -44,9 +42,7 @@ coords2country = function(points) {
   indices = over(pointsSP, countriesSP)
   # return the ADMIN names of each country
   indices$ADMIN  
-}
 
-token <- "1406202384.cd88663.ca32b81f941e4d809ba7fa8d3827d4b4"
 #token <- read_file(file = ".credentials/Insta_token") %>% 
 #         str_replace("\n", "")
 
